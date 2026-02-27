@@ -854,10 +854,6 @@
             <div class="stat-value" id="statRoutes">0</div>
             <div class="stat-label">Beregnet ruter</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-value" id="statAvg">0</div>
-            <div class="stat-label">Gns. kørselstid (min)</div>
-        </div>
     </div>
 
     <!-- Search -->
@@ -1250,8 +1246,6 @@ function loadClubTimes(clubName) {
     }
 
     // Update avg stat
-    const avgMin = Math.round(results.reduce((s, d) => s + d.duration_min, 0) / results.length);
-    document.getElementById('statAvg').textContent = avgMin;
 
     tbody.innerHTML = results.map(d => {
         const cls = d.duration_min <= 15 ? 'time-green' :
