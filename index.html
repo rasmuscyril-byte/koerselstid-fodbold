@@ -844,17 +844,6 @@
         <div class="progress-text" id="progressText">Starter...</div>
     </div>
 
-    <!-- Stats -->
-    <div class="stats-bar" id="statsBar" style="display:none;">
-        <div class="stat-card">
-            <div class="stat-value" id="statClubs">0</div>
-            <div class="stat-label">Klubber</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value" id="statRoutes">0</div>
-            <div class="stat-label">Beregnet ruter</div>
-        </div>
-    </div>
 
     <!-- Search -->
     <div class="search-card" id="searchCard" style="display:none;">
@@ -1046,12 +1035,6 @@ function initApp() {
 
     document.getElementById('searchCard').style.display = 'block';
     document.getElementById('tabsSection').style.display = 'block';
-    document.getElementById('statsBar').style.display = 'grid';
-
-    // Stats
-    document.getElementById('statClubs').textContent = clubs.length;
-    document.getElementById('statRoutes').textContent =
-        Object.keys(drivingMatrix).length.toLocaleString('da-DK');
 
     // Build sorted club name list
     clubNames = clubs.map(c => c.name).sort((a, b) => a.localeCompare(b, 'da'));
