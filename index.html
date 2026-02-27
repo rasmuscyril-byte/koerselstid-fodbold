@@ -1,0 +1,1372 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>Kørselstid - Fynske Fodboldklubber</title>
+    <style>
+        :root {
+            --primary: #1B5E20;
+            --primary-light: #4CAF50;
+            --primary-dark: #0D3B0F;
+            --accent: #FF6F00;
+            --accent-light: #FFB74D;
+            --bg: #F5F7FA;
+            --card: #FFFFFF;
+            --text: #1A1A2E;
+            --text-muted: #6B7280;
+            --border: #E5E7EB;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+            --radius: 16px;
+            --radius-sm: 10px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* === HEADER === */
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            color: white;
+            padding: 2rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            position: relative;
+            margin-bottom: 0.3rem;
+        }
+        .header h1 .icon { font-size: 2.5rem; margin-right: 0.5rem; }
+        .header p {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            position: relative;
+        }
+
+        /* === MAIN CONTAINER === */
+        .container {
+            max-width: 1200px;
+            margin: -2rem auto 2rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* === PROGRESS BAR === */
+        .progress-container {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .progress-container.hidden { display: none; }
+        .progress-bar-outer {
+            width: 100%;
+            height: 12px;
+            background: #E8F5E9;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 1rem 0 0.5rem;
+        }
+        .progress-bar-inner {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+        .progress-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .progress-spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid #E8F5E9;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* === SEARCH SECTION === */
+        .search-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .search-card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto;
+            gap: 1rem;
+            align-items: end;
+        }
+        @media (max-width: 768px) {
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .autocomplete-wrapper { position: relative; }
+
+        .search-input {
+            width: 100%;
+            padding: 0.85rem 1rem 0.85rem 2.8rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            transition: all 0.2s;
+            background: var(--bg);
+            outline: none;
+        }
+        .search-input:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.15);
+            background: white;
+        }
+        .search-input-icon {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            opacity: 0.4;
+        }
+
+        .autocomplete-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            max-height: 240px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .autocomplete-list.active { display: block; }
+        .autocomplete-item {
+            padding: 0.7rem 1rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.15s;
+        }
+        .autocomplete-item:hover, .autocomplete-item.selected {
+            background: #E8F5E9;
+            color: var(--primary-dark);
+        }
+        .autocomplete-item .city-tag {
+            float: right;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: var(--bg);
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .swap-btn {
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--border);
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.2s;
+            align-self: center;
+            margin-top: 1.2rem;
+        }
+        .swap-btn:hover {
+            border-color: var(--primary-light);
+            background: #E8F5E9;
+            transform: rotate(180deg);
+        }
+
+        .search-btn {
+            padding: 0.85rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            margin-top: 1.2rem;
+        }
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(27, 94, 32, 0.3);
+        }
+
+        /* === RESULT CARD === */
+        .result-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 0;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            display: none;
+        }
+        .result-card.active { display: block; animation: slideUp 0.4s ease; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .result-route {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+        .result-route .arrow { margin: 0 0.5rem; opacity: 0.7; }
+
+        .result-body {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .result-body { grid-template-columns: 1fr; }
+        }
+
+        .result-stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+        }
+        .result-stat .value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        .result-stat .unit {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+        .result-stat .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .result-addresses {
+            padding: 1rem 2rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .address-block .addr-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .address-block .addr-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin: 0.2rem 0;
+        }
+        .address-block .addr-detail {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* === TABS === */
+        .tabs-section {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        .tabs-header {
+            display: flex;
+            border-bottom: 2px solid var(--border);
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: transparent;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            position: relative;
+        }
+        .tab-btn:hover { color: var(--text); background: var(--bg); }
+        .tab-btn.active {
+            color: var(--primary);
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .tab-content { display: none; padding: 1.5rem; }
+        .tab-content.active { display: block; }
+
+        /* === CLUB LIST / TABLE === */
+        .club-list-search {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            outline: none;
+        }
+        .club-list-search:focus {
+            border-color: var(--primary-light);
+        }
+
+        .club-times-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .club-times-table th {
+            background: var(--primary);
+            color: white;
+            padding: 0.7rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        .club-times-table td {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .club-times-table tr:hover { background: #E8F5E9; }
+        .club-times-table .time-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .time-green { background: #E8F5E9; color: #2E7D32; }
+        .time-yellow { background: #FFF9C4; color: #F57F17; }
+        .time-orange { background: #FFE0B2; color: #E65100; }
+        .time-red { background: #FFCDD2; color: #C62828; }
+
+        .table-container {
+            max-height: 500px;
+            overflow: auto;
+        }
+
+        /* === EXPORT BUTTONS === */
+        .export-section {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            padding: 1.5rem;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+        }
+
+        .export-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .export-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(27, 94, 32, 0.2);
+        }
+        .export-btn.accent {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .export-btn.accent:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* === FULL MATRIX === */
+        .matrix-container {
+            overflow: auto;
+            max-height: 600px;
+            max-width: 100%;
+        }
+        .matrix-table {
+            border-collapse: collapse;
+            font-size: 0.7rem;
+        }
+        .matrix-table th, .matrix-table td {
+            padding: 0.25rem 0.35rem;
+            border: 1px solid #ddd;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .matrix-table th {
+            background: var(--primary);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            font-size: 0.65rem;
+        }
+        .matrix-table th.corner {
+            position: sticky;
+            left: 0;
+            z-index: 3;
+        }
+        .matrix-table td:first-child {
+            position: sticky;
+            left: 0;
+            background: #E8F5E9;
+            font-weight: 600;
+            z-index: 1;
+            text-align: left;
+            font-size: 0.7rem;
+        }
+        .matrix-table .cell-0-15 { background: #E8F5E9; }
+        .matrix-table .cell-15-30 { background: #FFF9C4; }
+        .matrix-table .cell-30-45 { background: #FFE0B2; }
+        .matrix-table .cell-45-plus { background: #FFCDD2; }
+        .matrix-table .cell-self { background: #E0E0E0; }
+
+        /* === FOOTER === */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .footer a { color: var(--primary); text-decoration: none; }
+
+        /* === STATS BAR === */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .stat-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .stat-card .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* === LOADING OVERLAY === */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+        .loading-overlay.active { display: flex; }
+        .loading-box {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem 3rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #c0c0c0; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a0a0a0; }
+
+        /* ============================================
+           MOBILE RESPONSIVE STYLES
+           ============================================ */
+
+        /* --- Small tablets and large phones (max 768px) --- */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1.5rem 1rem 2.5rem;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .header h1 .icon {
+                font-size: 1.8rem;
+            }
+            .header p {
+                font-size: 0.9rem;
+            }
+            .container {
+                padding: 0 0.75rem;
+                margin-top: -1.5rem;
+            }
+            .search-card {
+                padding: 1.2rem;
+            }
+            .search-card h2 {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+            }
+            .search-grid {
+                gap: 0.6rem;
+            }
+            .swap-btn {
+                margin-top: 0;
+                width: 44px;
+                height: 44px;
+                align-self: center;
+                justify-self: center;
+            }
+            .search-btn {
+                margin-top: 0.5rem;
+                width: 100%;
+                padding: 0.9rem;
+                font-size: 1.05rem;
+            }
+            .result-header {
+                padding: 1rem 1.2rem;
+            }
+            .result-route {
+                font-size: 0.95rem;
+            }
+            .result-body {
+                padding: 1.2rem;
+                gap: 0.8rem;
+            }
+            .result-stat {
+                padding: 1rem;
+            }
+            .result-stat .value {
+                font-size: 2rem;
+            }
+            .result-addresses {
+                grid-template-columns: 1fr;
+                padding: 1rem 1.2rem;
+                gap: 0.8rem;
+            }
+            .stats-bar {
+                gap: 0.5rem;
+            }
+            .stat-card {
+                padding: 0.8rem 0.5rem;
+            }
+            .stat-card .stat-value {
+                font-size: 1.5rem;
+            }
+            .stat-card .stat-label {
+                font-size: 0.75rem;
+            }
+            .tab-content {
+                padding: 1rem;
+            }
+            .club-times-table th,
+            .club-times-table td {
+                padding: 0.5rem 0.6rem;
+                font-size: 0.85rem;
+            }
+            /* Hide address column on tablets */
+            .club-times-table th:nth-child(4),
+            .club-times-table td:nth-child(4) {
+                display: none;
+            }
+            .export-section {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .export-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* --- Mobile phones (max 480px) --- */
+        @media (max-width: 480px) {
+            .header {
+                padding: 1.2rem 0.8rem 2rem;
+            }
+            .header h1 {
+                font-size: 1.25rem;
+                line-height: 1.3;
+            }
+            .header h1 .icon {
+                font-size: 1.5rem;
+                display: block;
+                margin-bottom: 0.2rem;
+            }
+            .header p {
+                font-size: 0.8rem;
+            }
+            .container {
+                padding: 0 0.5rem;
+                margin-top: -1.2rem;
+            }
+            .progress-container {
+                padding: 1.2rem;
+            }
+            .search-card {
+                padding: 1rem;
+            }
+            .search-input {
+                padding: 0.75rem 0.8rem 0.75rem 2.4rem;
+                font-size: 16px; /* Prevents iOS zoom on focus */
+                min-height: 48px;
+            }
+            .form-group label {
+                font-size: 0.75rem;
+            }
+            .swap-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            .result-body {
+                padding: 1rem;
+                gap: 0.6rem;
+            }
+            .result-stat {
+                padding: 0.8rem;
+            }
+            .result-stat .value {
+                font-size: 1.7rem;
+            }
+            .result-stat .label {
+                font-size: 0.75rem;
+            }
+            .stat-card .stat-value {
+                font-size: 1.3rem;
+            }
+            .stat-card .stat-label {
+                font-size: 0.7rem;
+            }
+            .tab-btn {
+                font-size: 0.8rem;
+                padding: 0.8rem 0.5rem;
+            }
+            .tab-content {
+                padding: 0.75rem;
+            }
+            /* Club select full width on mobile */
+            #tab-from > div:first-child {
+                flex-direction: column;
+            }
+            #clubSelect {
+                width: 100% !important;
+                min-width: unset !important;
+                font-size: 16px;
+                min-height: 48px;
+            }
+            #tableFilter {
+                min-width: unset !important;
+                font-size: 16px;
+                min-height: 48px;
+            }
+            .club-times-table {
+                font-size: 0.8rem;
+            }
+            .club-times-table th,
+            .club-times-table td {
+                padding: 0.45rem 0.4rem;
+            }
+            /* Hide address AND distance columns on small phones */
+            .club-times-table th:nth-child(3),
+            .club-times-table td:nth-child(3),
+            .club-times-table th:nth-child(4),
+            .club-times-table td:nth-child(4) {
+                display: none;
+            }
+            .table-container {
+                max-height: 300px;
+            }
+            .autocomplete-list {
+                max-height: 200px;
+            }
+            .autocomplete-item {
+                padding: 0.8rem 1rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .matrix-container {
+                max-height: 400px;
+            }
+            .footer {
+                padding: 1.5rem 0.5rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* --- Ensure touch targets are at least 44px --- */
+        @media (pointer: coarse) {
+            .search-input,
+            .search-btn,
+            .swap-btn,
+            .export-btn,
+            .tab-btn,
+            select,
+            .autocomplete-item {
+                min-height: 44px;
+            }
+            .club-times-table td {
+                padding: 0.6rem 0.5rem;
+            }
+        }
+
+        /* --- Safe area for notched phones --- */
+        @supports (padding: max(0px)) {
+            .header {
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
+            }
+            .container {
+                padding-left: max(0.75rem, env(safe-area-inset-left));
+                padding-right: max(0.75rem, env(safe-area-inset-right));
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h1><span class="icon">&#9917;</span> Kørselstid mellem Fodboldklubber</h1>
+    <p>Find kørselstid og afstand mellem fynske fodboldklubber</p>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+    <!-- Progress -->
+    <div class="progress-container" id="progressContainer">
+        <div>
+            <span class="progress-spinner"></span>
+            <strong id="progressTitle">Indlæser data...</strong>
+        </div>
+        <div class="progress-bar-outer">
+            <div class="progress-bar-inner" id="progressBar"></div>
+        </div>
+        <div class="progress-text" id="progressText">Starter...</div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-bar" id="statsBar" style="display:none;">
+        <div class="stat-card">
+            <div class="stat-value" id="statClubs">0</div>
+            <div class="stat-label">Klubber</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="statRoutes">0</div>
+            <div class="stat-label">Beregnet ruter</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="statAvg">0</div>
+            <div class="stat-label">Gns. kørselstid (min)</div>
+        </div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-card" id="searchCard" style="display:none;">
+        <h2>&#128269; Søg kørselstid</h2>
+        <div class="search-grid">
+            <!-- FROM -->
+            <div class="form-group">
+                <label>Fra klub</label>
+                <div class="autocomplete-wrapper">
+                    <span class="search-input-icon">&#127963;</span>
+                    <input type="text" class="search-input" id="fromInput" placeholder="Skriv klubnavn..." autocomplete="off">
+                    <div class="autocomplete-list" id="fromList"></div>
+                </div>
+            </div>
+
+            <!-- SWAP -->
+            <button class="swap-btn" onclick="swapClubs()" title="Byt klubber">&#8644;</button>
+
+            <!-- TO -->
+            <div class="form-group">
+                <label>Til klub</label>
+                <div class="autocomplete-wrapper">
+                    <span class="search-input-icon">&#127941;</span>
+                    <input type="text" class="search-input" id="toInput" placeholder="Skriv klubnavn..." autocomplete="off">
+                    <div class="autocomplete-list" id="toList"></div>
+                </div>
+            </div>
+
+            <!-- BUTTON -->
+            <button class="search-btn" onclick="searchRoute()">&#128663; Find rute</button>
+        </div>
+    </div>
+
+    <!-- Result -->
+    <div class="result-card" id="resultCard">
+        <div class="result-header">
+            <div class="result-route">
+                <span id="resultFrom">-</span>
+                <span class="arrow">&#10132;</span>
+                <span id="resultTo">-</span>
+            </div>
+        </div>
+        <div class="result-body">
+            <div class="result-stat">
+                <div class="value" id="resultTime">-</div>
+                <div class="label">Kørselstid</div>
+            </div>
+            <div class="result-stat">
+                <div class="value" id="resultDist">-</div>
+                <div class="unit">km</div>
+                <div class="label">Afstand</div>
+            </div>
+            <div class="result-stat">
+                <div class="value" id="resultAvgSpeed">-</div>
+                <div class="unit">km/t</div>
+                <div class="label">Gns. hastighed</div>
+            </div>
+        </div>
+        <div class="result-addresses">
+            <div class="address-block">
+                <div class="addr-label">&#128205; Fra</div>
+                <div class="addr-name" id="resultFromName">-</div>
+                <div class="addr-detail" id="resultFromAddr">-</div>
+            </div>
+            <div class="address-block">
+                <div class="addr-label">&#127937; Til</div>
+                <div class="addr-name" id="resultToName">-</div>
+                <div class="addr-detail" id="resultToAddr">-</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabs Section -->
+    <div class="tabs-section" id="tabsSection" style="display:none;">
+        <div class="tabs-header">
+            <button class="tab-btn active" onclick="switchTab('tab-from', event)">&#128203; Tider fra klub</button>
+            <button class="tab-btn" onclick="switchTab('tab-matrix', event)">&#128200; Fuld matrix</button>
+        </div>
+
+        <!-- Tab: Times from a club -->
+        <div class="tab-content active" id="tab-from">
+            <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                <select id="clubSelect" class="search-input" style="width: auto; min-width: 250px; padding-left: 1rem;">
+                    <option value="">-- Vælg en klub --</option>
+                </select>
+                <input type="text" class="club-list-search" id="tableFilter" placeholder="Filtrer resultater..." style="width: auto; flex: 1; min-width: 200px;">
+            </div>
+            <div class="table-container">
+                <table class="club-times-table" id="clubTimesTable">
+                    <thead>
+                        <tr>
+                            <th style="cursor:pointer;" onclick="sortTable(0)">Klub &#8597;</th>
+                            <th style="cursor:pointer;" onclick="sortTable(1)">Kørselstid &#8597;</th>
+                            <th style="cursor:pointer;" onclick="sortTable(2)">Afstand &#8597;</th>
+                            <th>Adresse</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clubTimesBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tab: Full matrix -->
+        <div class="tab-content" id="tab-matrix">
+            <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                Komplet matrix over kørselstider i minutter. Farvekoder:
+                <span style="background:#E8F5E9; padding: 0.1rem 0.4rem; border-radius: 3px;">0-15 min</span>
+                <span style="background:#FFF9C4; padding: 0.1rem 0.4rem; border-radius: 3px;">15-30 min</span>
+                <span style="background:#FFE0B2; padding: 0.1rem 0.4rem; border-radius: 3px;">30-45 min</span>
+                <span style="background:#FFCDD2; padding: 0.1rem 0.4rem; border-radius: 3px;">45+ min</span>
+            </p>
+            <div class="matrix-container" id="matrixContainer">
+                <p style="text-align:center; color: var(--text-muted);">Klik "Vis matrix" for at indlæse...</p>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="search-btn" onclick="loadMatrix()" id="loadMatrixBtn">&#128200; Vis matrix</button>
+            </div>
+        </div>
+
+        <!-- Export -->
+        <div class="export-section">
+            <button class="export-btn" onclick="downloadExcel()">
+                &#128196; Download Excel
+            </button>
+            <button class="export-btn accent" onclick="downloadCSV()">
+                &#128196; Download CSV
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    Data beregnet via <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> &amp;
+    <a href="http://project-osrm.org/" target="_blank">OSRM</a>.
+    Kørselstider er estimater baseret på vejnettet.
+</div>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-box">
+        <div class="progress-spinner" style="width: 40px; height: 40px; border-width: 4px;"></div>
+        <p style="margin-top: 1rem;">Indlæser data...</p>
+    </div>
+</div>
+
+<script>
+// === GLOBAL STATE ===
+let allClubs = [];
+let drivingMatrix = {};
+let clubNames = [];
+let currentSortCol = -1;
+let currentSortDir = 1;
+
+// === INITIALIZATION ===
+document.addEventListener('DOMContentLoaded', () => {
+    loadData();
+});
+
+async function loadData() {
+    const title = document.getElementById('progressTitle');
+    const text = document.getElementById('progressText');
+    
+    try {
+        title.textContent = 'Indlæser data...';
+        text.textContent = 'Henter klubber og kørselstider...';
+        
+        const [clubsResponse, matrixResponse] = await Promise.all([
+            fetch('data/clubs.json'),
+            fetch('data/matrix.json')
+        ]);
+        
+        if (!clubsResponse.ok || !matrixResponse.ok) {
+            throw new Error('Kunne ikke hente datafiler');
+        }
+        
+        allClubs = await clubsResponse.json();
+        drivingMatrix = await matrixResponse.json();
+        
+        document.getElementById('progressContainer').style.display = 'none';
+        initApp();
+    } catch (err) {
+        title.textContent = 'Fejl ved indlæsning';
+        text.textContent = 'Kunne ikke indlæse data: ' + err.message;
+    }
+}
+function initApp() {
+    const clubs = allClubs;
+
+    document.getElementById('searchCard').style.display = 'block';
+    document.getElementById('tabsSection').style.display = 'block';
+    document.getElementById('statsBar').style.display = 'grid';
+
+    // Stats
+    document.getElementById('statClubs').textContent = clubs.length;
+    document.getElementById('statRoutes').textContent =
+        Object.keys(drivingMatrix).length.toLocaleString('da-DK');
+
+    // Build sorted club name list
+    clubNames = clubs.map(c => c.name).sort((a, b) => a.localeCompare(b, 'da'));
+
+    // Populate club select
+    const select = document.getElementById('clubSelect');
+    const sorted = [...clubs].sort((a, b) => a.name.localeCompare(b.name, 'da'));
+    sorted.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c.name;
+        opt.textContent = `${c.name} (${c.city})`;
+        select.appendChild(opt);
+    });
+
+    select.addEventListener('change', () => {
+        if (select.value) loadClubTimes(select.value);
+    });
+
+    // Setup autocomplete
+    setupAutocomplete('fromInput', 'fromList');
+    setupAutocomplete('toInput', 'toList');
+
+    // Table filter
+    document.getElementById('tableFilter').addEventListener('input', filterTable);
+}
+
+// === AUTOCOMPLETE ===
+function setupAutocomplete(inputId, listId) {
+    const input = document.getElementById(inputId);
+    const list = document.getElementById(listId);
+
+    input.addEventListener('input', () => {
+        const val = input.value.toLowerCase().trim();
+        if (val.length < 1) { list.classList.remove('active'); return; }
+
+        const matches = allClubs.filter(c =>
+            c.name.toLowerCase().includes(val) ||
+            c.city.toLowerCase().includes(val)
+        ).slice(0, 12);
+
+        if (matches.length === 0) { list.classList.remove('active'); return; }
+
+        list.innerHTML = matches.map(c =>
+            `<div class="autocomplete-item" data-name="${c.name}">
+                ${highlightMatch(c.name, val)}
+                <span class="city-tag">${c.city}</span>
+            </div>`
+        ).join('');
+
+        list.classList.add('active');
+
+        list.querySelectorAll('.autocomplete-item').forEach(item => {
+            item.addEventListener('click', () => {
+                input.value = item.dataset.name;
+                list.classList.remove('active');
+            });
+        });
+    });
+
+    input.addEventListener('keydown', (e) => {
+        const items = list.querySelectorAll('.autocomplete-item');
+        const selected = list.querySelector('.autocomplete-item.selected');
+        let idx = Array.from(items).indexOf(selected);
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (selected) selected.classList.remove('selected');
+            idx = Math.min(idx + 1, items.length - 1);
+            if (items[idx]) items[idx].classList.add('selected');
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (selected) selected.classList.remove('selected');
+            idx = Math.max(idx - 1, 0);
+            if (items[idx]) items[idx].classList.add('selected');
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (selected) {
+                input.value = selected.dataset.name;
+                list.classList.remove('active');
+            } else {
+                searchRoute();
+            }
+        } else if (e.key === 'Escape') {
+            list.classList.remove('active');
+        }
+    });
+
+    // Close on outside click/touch
+    ['click', 'touchstart'].forEach(evtType => {
+        document.addEventListener(evtType, (e) => {
+            if (!e.target.closest('.autocomplete-wrapper')) {
+                list.classList.remove('active');
+            }
+        }, { passive: true });
+    });
+}
+
+function highlightMatch(text, query) {
+    const idx = text.toLowerCase().indexOf(query);
+    if (idx === -1) return text;
+    return text.substring(0, idx) +
+           '<strong style="color: var(--primary);">' +
+           text.substring(idx, idx + query.length) + '</strong>' +
+           text.substring(idx + query.length);
+}
+
+// === SEARCH ===
+function swapClubs() {
+    const from = document.getElementById('fromInput');
+    const to = document.getElementById('toInput');
+    const temp = from.value;
+    from.value = to.value;
+    to.value = temp;
+}
+
+function searchRoute() {
+    const from = document.getElementById('fromInput').value.trim();
+    const to = document.getElementById('toInput').value.trim();
+
+    if (!from || !to) {
+        alert('Vælg venligst både en fra- og til-klub.');
+        return;
+    }
+
+    const key = `${from}|${to}`;
+    const data = drivingMatrix[key];
+
+    if (!data) {
+        alert(`Ingen data fundet for '${from}' → '${to}'`);
+        return;
+    }
+
+    const card = document.getElementById('resultCard');
+    card.classList.add('active');
+
+    document.getElementById('resultFrom').textContent = from;
+    document.getElementById('resultTo').textContent = to;
+    document.getElementById('resultTime').textContent = data.duration_text;
+    document.getElementById('resultDist').textContent = data.distance_km;
+
+    // Avg speed
+    const avgSpeed = data.duration_min > 0
+        ? Math.round(data.distance_km / (data.duration_min / 60))
+        : 0;
+    document.getElementById('resultAvgSpeed').textContent = avgSpeed;
+
+    // Addresses
+    const fromClub = allClubs.find(c => c.name === from);
+    const toClub = allClubs.find(c => c.name === to);
+
+    if (fromClub) {
+        document.getElementById('resultFromName').textContent = fromClub.name;
+        document.getElementById('resultFromAddr').textContent =
+            `${fromClub.address}, ${fromClub.postal_code} ${fromClub.city}`;
+    }
+    if (toClub) {
+        document.getElementById('resultToName').textContent = toClub.name;
+        document.getElementById('resultToAddr').textContent =
+            `${toClub.address}, ${toClub.postal_code} ${toClub.city}`;
+    }
+
+    // Scroll to result
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// === CLUB TIMES TABLE ===
+function loadClubTimes(clubName) {
+    const tbody = document.getElementById('clubTimesBody');
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem;">Indlæser...</td></tr>';
+
+    const results = [];
+    for (const club of allClubs) {
+        if (club.name === clubName) continue;
+        const key = `${clubName}|${club.name}`;
+        const entry = drivingMatrix[key];
+        if (entry) {
+            results.push({
+                club: club.name,
+                address: `${club.address}, ${club.postal_code} ${club.city}`,
+                duration_min: entry.duration_min,
+                duration_text: entry.duration_text,
+                distance_km: entry.distance_km
+            });
+        }
+    }
+
+    results.sort((a, b) => a.duration_min - b.duration_min);
+
+    if (!results.length) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Ingen data fundet</td></tr>';
+        return;
+    }
+
+    // Update avg stat
+    const avgMin = Math.round(results.reduce((s, d) => s + d.duration_min, 0) / results.length);
+    document.getElementById('statAvg').textContent = avgMin;
+
+    tbody.innerHTML = results.map(d => {
+        const cls = d.duration_min <= 15 ? 'time-green' :
+                    d.duration_min <= 30 ? 'time-yellow' :
+                    d.duration_min <= 45 ? 'time-orange' : 'time-red';
+        return `<tr data-filter="${d.club.toLowerCase()} ${d.address.toLowerCase()}">
+            <td><strong>${d.club}</strong></td>
+            <td><span class="time-badge ${cls}">${d.duration_text}</span></td>
+            <td>${d.distance_km} km</td>
+            <td style="color: var(--text-muted); font-size: 0.85rem;">${d.address}</td>
+        </tr>`;
+    }).join('');
+}
+
+function filterTable() {
+    const filter = document.getElementById('tableFilter').value.toLowerCase();
+    const rows = document.querySelectorAll('#clubTimesBody tr');
+    rows.forEach(row => {
+        const text = row.getAttribute('data-filter') || row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+    });
+}
+
+function sortTable(colIdx) {
+    if (currentSortCol === colIdx) {
+        currentSortDir *= -1;
+    } else {
+        currentSortCol = colIdx;
+        currentSortDir = 1;
+    }
+
+    const tbody = document.getElementById('clubTimesBody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+
+    rows.sort((a, b) => {
+        let aVal = a.children[colIdx].textContent.trim();
+        let bVal = b.children[colIdx].textContent.trim();
+
+        // Try numeric
+        const aNum = parseFloat(aVal.replace(/[^\d.]/g, ''));
+        const bNum = parseFloat(bVal.replace(/[^\d.]/g, ''));
+
+        if (!isNaN(aNum) && !isNaN(bNum)) {
+            return (aNum - bNum) * currentSortDir;
+        }
+        return aVal.localeCompare(bVal, 'da') * currentSortDir;
+    });
+
+    rows.forEach(r => tbody.appendChild(r));
+}
+
+// === TABS ===
+function switchTab(tabId, evt) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+    const target = (evt && evt.target) || event.target;
+    target.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+}
+
+// === MATRIX ===
+function loadMatrix() {
+    const container = document.getElementById('matrixContainer');
+    container.innerHTML = '<p style="text-align:center;"><span class="progress-spinner"></span> Genererer matrix...</p>';
+    document.getElementById('loadMatrixBtn').disabled = true;
+
+    // Use setTimeout to let the UI update before heavy DOM work
+    setTimeout(() => {
+        const clubs = clubNames;
+
+        let html = '<table class="matrix-table"><thead><tr>';
+        html += '<th class="corner">Klub</th>';
+        clubs.forEach(c => {
+            const short = c.length > 15 ? c.substring(0, 14) + '...' : c;
+            html += `<th title="${c}">${short}</th>`;
+        });
+        html += '</tr></thead><tbody>';
+
+        clubs.forEach(cn1 => {
+            html += '<tr>';
+            html += `<td title="${cn1}">${cn1}</td>`;
+            clubs.forEach(cn2 => {
+                const key = `${cn1}|${cn2}`;
+                const entry = drivingMatrix[key];
+                const val = entry ? entry.duration_min : null;
+
+                let cls = '';
+                if (val === 0 || cn1 === cn2) cls = 'cell-self';
+                else if (val !== null && val <= 15) cls = 'cell-0-15';
+                else if (val !== null && val <= 30) cls = 'cell-15-30';
+                else if (val !== null && val <= 45) cls = 'cell-30-45';
+                else if (val !== null) cls = 'cell-45-plus';
+
+                html += `<td class="${cls}" title="${cn1} → ${cn2}: ${val !== null ? val : '-'} min">${val !== null ? val : '-'}</td>`;
+            });
+            html += '</tr>';
+        });
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+        document.getElementById('loadMatrixBtn').disabled = false;
+        document.getElementById('loadMatrixBtn').textContent = '🔄 Opdater matrix';
+    }, 50);
+}
+
+// === EXPORT ===
+function downloadExcel() {
+    window.location.href = 'exports/koerselstider_matrix.xlsx';
+}
+
+function downloadCSV() {
+    window.location.href = 'exports/koerselstider_matrix.csv';
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,698 @@
+[
+  {
+    "name": "Allested U & IF",
+    "address": "Skolevej 1B",
+    "postal_code": "5672",
+    "city": "Broby"
+  },
+  {
+    "name": "Allesø GF",
+    "address": "Spurvelundsvej 20",
+    "postal_code": "5270",
+    "city": "Odense N"
+  },
+  {
+    "name": "Assens FC",
+    "address": "Stadionvej 24",
+    "postal_code": "5610",
+    "city": "Assens"
+  },
+  {
+    "name": "Aunslev IF",
+    "address": "Kertemindevej 50",
+    "postal_code": "5800",
+    "city": "Nyborg"
+  },
+  {
+    "name": "B 1909",
+    "address": "Gillestedvej 12",
+    "postal_code": "5240",
+    "city": "Odense Nø"
+  },
+  {
+    "name": "B 67",
+    "address": "Carlsen-Skjødts Vej 37",
+    "postal_code": "5220",
+    "city": "Odense Sø"
+  },
+  {
+    "name": "B1913",
+    "address": "Campusvej 55",
+    "postal_code": "5230",
+    "city": "Odense M"
+  },
+  {
+    "name": "BBB",
+    "address": "Brændekildevej 30",
+    "postal_code": "5250",
+    "city": "Odense Sv"
+  },
+  {
+    "name": "Birkende BK",
+    "address": "Hans Tausensgade 35 A",
+    "postal_code": "5550",
+    "city": "Langeskov"
+  },
+  {
+    "name": "BK Stjernen af 1968",
+    "address": "Gl. Skårupvej 3",
+    "postal_code": "5700",
+    "city": "Svendborg"
+  },
+  {
+    "name": "BK Vestfyn",
+    "address": "Kærvangen 35",
+    "postal_code": "5610",
+    "city": "Assens"
+  },
+  {
+    "name": "Bogense G & IF",
+    "address": "Bogense Stadion",
+    "postal_code": "5400",
+    "city": "Bogense"
+  },
+  {
+    "name": "Bolbro GIF",
+    "address": "Falen 95",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
+    "name": "Boldklubben Marienlyst",
+    "address": "Windelsvej 138",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
+    "name": "Brenderup IF",
+    "address": "Kirkevej 13",
+    "postal_code": "5464",
+    "city": "Brenderup Fyn"
+  },
+  {
+    "name": "Brylle BK",
+    "address": "Tobovej 30",
+    "postal_code": "5690",
+    "city": "Tommerup"
+  },
+  {
+    "name": "Båring GF",
+    "address": "Kærbyvej 2A",
+    "postal_code": "5466",
+    "city": "Asperup"
+  },
+  {
+    "name": "Dalby IF",
+    "address": "Dalby Bygade 49",
+    "postal_code": "5380",
+    "city": "Dalby"
+  },
+  {
+    "name": "Dalum IF",
+    "address": "Dalumvej 95 D",
+    "postal_code": "5250",
+    "city": "Odense Sv"
+  },
+  {
+    "name": "Drigstrup BK",
+    "address": "Drigstrup Bygade 46",
+    "postal_code": "5300",
+    "city": "Kerteminde"
+  },
+  {
+    "name": "DSIO",
+    "address": "Roesskovsvej 125",
+    "postal_code": "5200",
+    "city": "Odense V"
+  },
+  {
+    "name": "Ebberup IF",
+    "address": "Skolevej 7",
+    "postal_code": "5631",
+    "city": "Ebberup"
+  },
+  {
+    "name": "Egebjerg Fodbold",
+    "address": "Rødkildevej 1",
+    "postal_code": "5762",
+    "city": "Vester Skerninge"
+  },
+  {
+    "name": "Ejby IK",
+    "address": "Halvej 5",
+    "postal_code": "5592",
+    "city": "Ejby"
+  },
+  {
+    "name": "ERI",
+    "address": "Dyrekredsen 12",
+    "postal_code": "5700",
+    "city": "Svendborg"
+  },
+  {
+    "name": "Faldsled/Svanninge SG & IF",
+    "address": "Kirkegyden 29",
+    "postal_code": "5642",
+    "city": "Millinge"
+  },
+  {
+    "name": "FC Broby",
+    "address": "Egeballe 1G",
+    "postal_code": "5672",
+    "city": "Broby"
+  },
+  {
+    "name": "FC Campus",
+    "address": "Rødegårdsvej 206",
+    "postal_code": "5230",
+    "city": "Odense M"
+  },
+  {
+    "name": "FC Faaborg",
+    "address": "Stadionvej 4",
+    "postal_code": "5600",
+    "city": "Faaborg"
+  },
+  {
+    "name": "FC Hjallese",
+    "address": "Schacksgade 14 st tv",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
+    "name": "FC Kurant",
+    "address": "Nyborgvej 70",
+    "postal_code": "5700",
+    "city": "Svendborg"
+  },
+  {
+    "name": "FC Odense",
+    "address": "Mågebakken 199R",
+    "postal_code": "5250",
+    "city": "Odense Sv"
+  },
+  {
+    "name": "FC Sydfyn",
+    "address": "Linkenkærsvej 55",
+    "postal_code": "5700",
+    "city": "Svendborg"
+  },
+  {
+    "name": "Fjelsted/Harndrup IF",
+    "address": "Juelsmindevej 11b",
+    "postal_code": "5463",
+    "city": "Harndrup"
+  },
+  {
+    "name": "Fjordager IF",
+    "address": "Østbirkvej 21 Seden",
+    "postal_code": "5240",
+    "city": "Odense Nø"
+  },
+  {
+    "name": "Fortuna Svendborg",
+    "address": "Ryttervej 76",
+    "postal_code": "5700",
+    "city": "Svendborg"
+  },
+  {
+    "name": "Fraugde G & IF",
+    "address": "Fraugde Byvej 22",
+    "postal_code": "5220",
+    "city": "Odense Sø"
+  },
+  {
+    "name": "Gelsted G & IF",
+    "address": "Sportsvænget 5",
+    "postal_code": "5591",
+    "city": "Gelsted"
+  },
+  {
+    "name": "Gislev IF",
+    "address": "Skolevej 9",
+    "postal_code": "5854",
+    "city": "Gislev"
+  },
+  {
+    "name": "Glamsbjerg IF",
+    "address": "Assensvej 5",
+    "postal_code": "5620",
+    "city": "Glamsbjerg"
+  },
+  {
+    "name": "HERIF",
+    "address": "Odensevej 98",
+    "postal_code": "5853",
+    "city": "Ørbæk"
+  },
+  {
+    "name": "Herrested-Ørbæk Boldklub",
+    "address": "Langemosevej 5",
+    "postal_code": "5853",
+    "city": "Ørbæk"
+  },
+  {
+    "name": "Hesselager Fodbold",
+    "address": "Østergade 52",
+    "postal_code": "5874",
+    "city": "Hesselager"
+  },
+  {
+    "name": "Holluf Pile-Tornbjerg IF",
+    "address": "Nøglens Kvarter 12",
+    "postal_code": "5220",
+    "city": "Odense Sø"
+  },
+  {
+    "name": "Horne f. Sp.",
+    "address": "Egsgyden 12",
+    "postal_code": "5600",
+    "city": "Faaborg"
+  },
+  {
+    "name": "Humble BK",
+    "address": "Ristingevej 21",
+    "postal_code": "5932",
+    "city": "Humble"
+  },
+  {
+    "name": "Højby S & G",
+    "address": "Nørrelunden 20",
+    "postal_code": "5260",
+    "city": "Odense S"
+  },
+  {
+    "name": "Haarby IF",
+    "address": "Sportsvej 18",
+    "postal_code": "5683",
+    "city": "Haarby"
+  },
+  {
+    "name": "Hårslev BK",
+    "address": "Ejlskovvej 16",
+    "postal_code": "5471",
+    "city": "Søndersø"
+  },
+  {
+    "name": "IF 09",
+    "address": "Gillestedvej 12",
+    "postal_code": "5240",
+    "city": "Odense Nø"
+  },
+  {
+    "name": "Issø F16",
+    "address": "Skolevej 5A",
+    "postal_code": "5771",
+    "city": "Stenstrup"
+  },
+  {
+    "name": "Kauslunde IF",
+    "address": "Sportsvej 7",
+    "postal_code": "5500",
+    "city": "Middelfart"
+  },
+  {
+    "name": "Kerteminde BK",
+    "address": "Enggade 19",
+    "postal_code": "5300",
+    "city": "Kerteminde"
+  },
+  {
+    "name": "KFUM.s BK Odense",
+    "address": "Rismarksvænget 11",
+    "postal_code": "5200",
+    "city": "Odense V"
+  },
+  {
+    "name": "Kirkeby IF",
+    "address": "Assensvej 18",
+    "postal_code": "5771",
+    "city": "Stenstrup"
+  },
+  {
+    "name": "Korinth IF",
+    "address": "Vinkelvej 5",
+    "postal_code": "5600",
+    "city": "Faaborg"
+  },
+  {
+    "name": "KR 70",
+    "address": "Nymarken 47",
+    "postal_code": "5300",
+    "city": "Kerteminde"
+  },
+  {
+    "name": "Krarup Espe Fodbold",
+    "address": "Hasselvænget 14",
+    "postal_code": "5750",
+    "city": "Ringe"
+  },
+  {
+    "name": "KRFK",
+    "address": "Krogsbølle Bygade 54",
+    "postal_code": "5450",
+    "city": "Otterup"
+  },
+  {
+    "name": "KU BK",
+    "address": "Præstevej 12",
+    "postal_code": "5210",
+    "city": "Odense Nv"
+  },
+  {
+    "name": "Kværndrup BK",
+    "address": "Vængevej 2",
+    "postal_code": "5772",
+    "city": "Kværndrup"
+  },
+  {
+    "name": "Langeskov IF",
+    "address": "Børmosevej 5",
+    "postal_code": "5550",
+    "city": "Langeskov"
+  },
+  {
+    "name": "Langtved SG & IF",
+    "address": "Langtvedvej 11",
+    "postal_code": "5540",
+    "city": "Ullerslev"
+  },
+  {
+    "name": "Longelse Sp.",
+    "address": "Longelsevej 12",
+    "postal_code": "5900",
+    "city": "Rudkøbing"
+  },
+  {
+    "name": "Lumby IF 88",
+    "address": "Cecilievej 4",
+    "postal_code": "5270",
+    "city": "Odense N"
+  },
+  {
+    "name": "Marslev G & IF",
+    "address": "Kirkevænget 6",
+    "postal_code": "5290",
+    "city": "Marslev"
+  },
+  {
+    "name": "Marstal IF",
+    "address": "Vestergade 48C",
+    "postal_code": "5960",
+    "city": "Marstal"
+  },
+  {
+    "name": "MG & BK",
+    "address": "Færøvej 54",
+    "postal_code": "5500",
+    "city": "Middelfart"
+  },
+  {
+    "name": "Morud IF",
+    "address": "Idrætsvej 7",
+    "postal_code": "5462",
+    "city": "Morud"
+  },
+  {
+    "name": "Munkebo BK",
+    "address": "Mosevangen 2",
+    "postal_code": "5330",
+    "city": "Munkebo"
+  },
+  {
+    "name": "Nr. Lyndelse / Søby F.C.",
+    "address": "Lumbyvej 62 A",
+    "postal_code": "5792",
+    "city": "Årslev"
+  },
+  {
+    "name": "Nr. Søby BK",
+    "address": "Stadionvænget 27",
+    "postal_code": "5792",
+    "city": "Årslev"
+  },
+  {
+    "name": "Nr. Aaby IK",
+    "address": "Idrætsvej 7",
+    "postal_code": "5580",
+    "city": "Nørre Aaby"
+  },
+  {
+    "name": "Nyborg G & IF",
+    "address": "Storebæltsvej 15",
+    "postal_code": "5800",
+    "city": "Nyborg"
+  },
+  {
+    "name": "Næsby BK",
+    "address": "Stærehusvej 31",
+    "postal_code": "5270",
+    "city": "Odense N"
+  },
+  {
+    "name": "OB Q",
+    "address": "Windelsvej 138",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
+    "name": "Odense Boldklub",
+    "address": "Sdr. Boulevard 172",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
+    "name": "OKS",
+    "address": "Østerbæksvej 125",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
+    "name": "Otterup Bold- og Idrætsklub",
+    "address": "Bryggerivej 2",
+    "postal_code": "5450",
+    "city": "Otterup"
+  },
+  {
+    "name": "Oure Fodbold Akademi",
+    "address": "Idrætsvej 1",
+    "postal_code": "5883",
+    "city": "Oure"
+  },
+  {
+    "name": "Ringe BK",
+    "address": "Floravej 17C",
+    "postal_code": "5750",
+    "city": "Ringe"
+  },
+  {
+    "name": "Rolfsted IF",
+    "address": "Ørbækvej 878A",
+    "postal_code": "5863",
+    "city": "Ferritslev Fyn"
+  },
+  {
+    "name": "Rudkøbing BK",
+    "address": "Rue Mark 9",
+    "postal_code": "5900",
+    "city": "Rudkøbing"
+  },
+  {
+    "name": "Ryslinge BK",
+    "address": "Ellehavevej 1",
+    "postal_code": "5856",
+    "city": "Ryslinge"
+  },
+  {
+    "name": "Røde Stjerne",
+    "address": "Falen 70",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
+    "name": "S.K.F.I.F.",
+    "address": "Langekærvej 10 B",
+    "postal_code": "5260",
+    "city": "Odense S"
+  },
+  {
+    "name": "Sanderum BK",
+    "address": "Holkebjergvej 45 - 55 Højme",
+    "postal_code": "5250",
+    "city": "Odense Sv"
+  },
+  {
+    "name": "SfB",
+    "address": "Ryttervej 76",
+    "postal_code": "5700",
+    "city": "Svendborg"
+  },
+  {
+    "name": "Skalbjerg BK",
+    "address": "Havelundvej 2",
+    "postal_code": "5492",
+    "city": "Vissenbjerg"
+  },
+  {
+    "name": "Skallebølle Sportsklub",
+    "address": "Kelstrupvej 84",
+    "postal_code": "5492",
+    "city": "Vissenbjerg"
+  },
+  {
+    "name": "Skamby BK",
+    "address": "Bredgade 64",
+    "postal_code": "5485",
+    "city": "Skamby"
+  },
+  {
+    "name": "Skeby GF",
+    "address": "Skovgyden 60",
+    "postal_code": "5450",
+    "city": "Otterup"
+  },
+  {
+    "name": "Skovby GF",
+    "address": "Middelfartvej 3",
+    "postal_code": "5400",
+    "city": "Bogense"
+  },
+  {
+    "name": "Skårup IF",
+    "address": "Åbyvejen 43",
+    "postal_code": "5881",
+    "city": "Skårup Fyn"
+  },
+  {
+    "name": "Stenstrup IF",
+    "address": "Skolevej 5 A",
+    "postal_code": "5771",
+    "city": "Stenstrup"
+  },
+  {
+    "name": "Stige Boldklub 2017",
+    "address": "Tanggårdvej 12",
+    "postal_code": "5270",
+    "city": "Odense N"
+  },
+  {
+    "name": "Strib IF",
+    "address": "Ny Billeshavevej 1-3",
+    "postal_code": "5500",
+    "city": "Middelfart"
+  },
+  {
+    "name": "SUB Ullerslev",
+    "address": "Skolevej 2",
+    "postal_code": "5540",
+    "city": "Ullerslev"
+  },
+  {
+    "name": "Særslev BK",
+    "address": "Østergade 24",
+    "postal_code": "5471",
+    "city": "Søndersø"
+  },
+  {
+    "name": "Søhus IF",
+    "address": "Bispeengen 7",
+    "postal_code": "5270",
+    "city": "Odense N"
+  },
+  {
+    "name": "Søndersø BK",
+    "address": "Ullerupvænget 2",
+    "postal_code": "5471",
+    "city": "Søndersø"
+  },
+  {
+    "name": "Tarup/Paarup IF",
+    "address": "Paarupvej 21",
+    "postal_code": "5210",
+    "city": "Odense Nv"
+  },
+  {
+    "name": "Thurø BK af 1920",
+    "address": "Rolf Krakesvej 20 A",
+    "postal_code": "5700",
+    "city": "Svendborg"
+  },
+  {
+    "name": "Tommerup BK",
+    "address": "Tallerupvej 76",
+    "postal_code": "5690",
+    "city": "Tommerup"
+  },
+  {
+    "name": "Tranekær/Tullebølle IF",
+    "address": "Løkkebyvej 2A",
+    "postal_code": "5900",
+    "city": "Rudkøbing"
+  },
+  {
+    "name": "Tved BK",
+    "address": "Brændeskovvej 2",
+    "postal_code": "5700",
+    "city": "Svendborg"
+  },
+  {
+    "name": "Tårup IF",
+    "address": "Sportsvænget 4",
+    "postal_code": "5871",
+    "city": "Frørup"
+  },
+  {
+    "name": "Tåsinge f. B.",
+    "address": "Eskærvej 63 C",
+    "postal_code": "5700",
+    "city": "Svendborg"
+  },
+  {
+    "name": "Ubberud IF",
+    "address": "Ubberudvej 30",
+    "postal_code": "5491",
+    "city": "Blommenslyst"
+  },
+  {
+    "name": "Veflinge G & IF",
+    "address": "Lindebjerg 38",
+    "postal_code": "5474",
+    "city": "Veflinge"
+  },
+  {
+    "name": "Verninge IF",
+    "address": "Fuglekildevej 73 C",
+    "postal_code": "5690",
+    "city": "Tommerup"
+  },
+  {
+    "name": "Vindinge BK",
+    "address": "Skolevej 15",
+    "postal_code": "5800",
+    "city": "Nyborg"
+  },
+  {
+    "name": "Vissenbjerg G & IF",
+    "address": "Idrætsvej 2",
+    "postal_code": "5492",
+    "city": "Vissenbjerg"
+  },
+  {
+    "name": "ØB",
+    "address": "Arkonavej 10B",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
+    "name": "Aarslev BK",
+    "address": "Kirkevej 14A",
+    "postal_code": "5792",
+    "city": "Årslev"
+  },
+  {
+    "name": "Aarup BK",
+    "address": "Stadionvej 13",
+    "postal_code": "5560",
+    "city": "Aarup"
+  }
+]
