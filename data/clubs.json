@@ -1,5 +1,11 @@
 [
   {
+    "name": "Agedrup-Bullerup Boldklub",
+    "address": "Brolandvej 16",
+    "postal_code": "5320",
+    "city": "Agedrup"
+  },
+  {
     "name": "Allested U & IF",
     "address": "Skolevej 1B",
     "postal_code": "5672",
@@ -36,6 +42,12 @@
     "city": "Odense Sø"
   },
   {
+    "name": "B Chang",
+    "address": "Kochsgade 16",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
     "name": "B1913",
     "address": "Campusvej 55",
     "postal_code": "5230",
@@ -54,6 +66,12 @@
     "city": "Langeskov"
   },
   {
+    "name": "BK Posten",
+    "address": "Kildemosevej 20",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
     "name": "BK Stjernen af 1968",
     "address": "Gl. Skårupvej 3",
     "postal_code": "5700",
@@ -66,6 +84,12 @@
     "city": "Assens"
   },
   {
+    "name": "BK2020",
+    "address": "Stadionvej 50",
+    "postal_code": "5200",
+    "city": "Odense V"
+  },
+  {
     "name": "Bogense G & IF",
     "address": "Bogense Stadion",
     "postal_code": "5400",
@@ -76,6 +100,12 @@
     "address": "Falen 95",
     "postal_code": "5000",
     "city": "Odense C"
+  },
+  {
+    "name": "Boldklubben Enghaven",
+    "address": "H.P. Simonsens Allé 171",
+    "postal_code": "5250",
+    "city": "Odense Sv"
   },
   {
     "name": "Boldklubben Marienlyst",
@@ -103,7 +133,7 @@
   },
   {
     "name": "Dalby IF",
-    "address": "Dalby Bygade 49",
+    "address": "Dalby Bygade 49, 5380 Dalby",
     "postal_code": "5380",
     "city": "Dalby"
   },
@@ -112,6 +142,12 @@
     "address": "Dalumvej 95 D",
     "postal_code": "5250",
     "city": "Odense Sv"
+  },
+  {
+    "name": "DBU Fyn",
+    "address": "Stadionvej 50, opg. C",
+    "postal_code": "5200",
+    "city": "Odense V"
   },
   {
     "name": "Drigstrup BK",
@@ -150,10 +186,28 @@
     "city": "Svendborg"
   },
   {
+    "name": "F.C. Lange Bolde",
+    "address": "Rugårdsvej 242. 2",
+    "postal_code": "5210",
+    "city": "Odense Nv"
+  },
+  {
     "name": "Faldsled/Svanninge SG & IF",
     "address": "Kirkegyden 29",
     "postal_code": "5642",
     "city": "Millinge"
+  },
+  {
+    "name": "FC Avrasya",
+    "address": "Risingvej 25",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
+    "name": "FC BiH Odense",
+    "address": "Ejby Kirkevej 15",
+    "postal_code": "5220",
+    "city": "Odense Sø"
   },
   {
     "name": "FC Broby",
@@ -175,7 +229,7 @@
   },
   {
     "name": "FC Hjallese",
-    "address": "Schacksgade 14 st tv",
+    "address": "Schacksgade 14, st tv",
     "postal_code": "5000",
     "city": "Odense C"
   },
@@ -198,6 +252,18 @@
     "city": "Svendborg"
   },
   {
+    "name": "FC Zagros Odense",
+    "address": "Væbnerhatten 106",
+    "postal_code": "5220",
+    "city": "Odense Sø"
+  },
+  {
+    "name": "FIUK, Odense",
+    "address": "Risingevej 122",
+    "postal_code": "5240",
+    "city": "Odense Nø"
+  },
+  {
     "name": "Fjelsted/Harndrup IF",
     "address": "Juelsmindevej 11b",
     "postal_code": "5463",
@@ -205,9 +271,21 @@
   },
   {
     "name": "Fjordager IF",
-    "address": "Østbirkvej 21 Seden",
+    "address": "Østbirkvej 21, Seden",
     "postal_code": "5240",
     "city": "Odense Nø"
+  },
+  {
+    "name": "FK Utopia",
+    "address": "Munke Mose Alle 8 B",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
+    "name": "Flemløse BK",
+    "address": "Sportsvej 9",
+    "postal_code": "5620",
+    "city": "Glamsbjerg"
   },
   {
     "name": "Fortuna Svendborg",
@@ -226,6 +304,12 @@
     "address": "Sportsvænget 5",
     "postal_code": "5591",
     "city": "Gelsted"
+  },
+  {
+    "name": "Get2Sport",
+    "address": "Vollsmose Alle 20",
+    "postal_code": "5240",
+    "city": "Odense Nø"
   },
   {
     "name": "Gislev IF",
@@ -270,6 +354,12 @@
     "city": "Faaborg"
   },
   {
+    "name": "Hospitalets FK",
+    "address": "Færøvej 54",
+    "postal_code": "5500",
+    "city": "Middelfart"
+  },
+  {
     "name": "Humble BK",
     "address": "Ristingevej 21",
     "postal_code": "5932",
@@ -280,6 +370,12 @@
     "address": "Nørrelunden 20",
     "postal_code": "5260",
     "city": "Odense S"
+  },
+  {
+    "name": "Haarby Efterskole",
+    "address": "Assensvej 8",
+    "postal_code": "5683",
+    "city": "Haarby"
   },
   {
     "name": "Haarby IF",
@@ -312,6 +408,12 @@
     "city": "Middelfart"
   },
   {
+    "name": "Kerte GF",
+    "address": "Kertevej 61",
+    "postal_code": "5560",
+    "city": "Aarup"
+  },
+  {
     "name": "Kerteminde BK",
     "address": "Enggade 19",
     "postal_code": "5300",
@@ -324,10 +426,22 @@
     "city": "Odense V"
   },
   {
+    "name": "Kildemosens BK",
+    "address": "Kildemosevej 22",
+    "postal_code": "5000",
+    "city": "Odense C"
+  },
+  {
     "name": "Kirkeby IF",
     "address": "Assensvej 18",
     "postal_code": "5771",
     "city": "Stenstrup"
+  },
+  {
+    "name": "Klinte Grindløse IF",
+    "address": "Klintevej 48 b",
+    "postal_code": "5400",
+    "city": "Bogense"
   },
   {
     "name": "Korinth IF",
@@ -468,6 +582,18 @@
     "city": "Odense C"
   },
   {
+    "name": "Ommel BK",
+    "address": "Marstalsvejen 34",
+    "postal_code": "5960",
+    "city": "Marstal"
+  },
+  {
+    "name": "Ore Sogns GF",
+    "address": "Ørbækvej 5B",
+    "postal_code": "5400",
+    "city": "Bogense"
+  },
+  {
     "name": "Otterup Bold- og Idrætsklub",
     "address": "Bryggerivej 2",
     "postal_code": "5450",
@@ -480,10 +606,22 @@
     "city": "Oure"
   },
   {
+    "name": "PDIF",
+    "address": "Lundemosevej 33",
+    "postal_code": "5240",
+    "city": "Odense Nø"
+  },
+  {
     "name": "Ringe BK",
     "address": "Floravej 17C",
     "postal_code": "5750",
     "city": "Ringe"
+  },
+  {
+    "name": "Rise S & IF",
+    "address": "St. Rise Skolevej 1 - 3",
+    "postal_code": "5970",
+    "city": "Ærøskøbing"
   },
   {
     "name": "Rolfsted IF",
@@ -600,6 +738,12 @@
     "city": "Odense N"
   },
   {
+    "name": "Søllinge Sport og Fritid",
+    "address": "Sdr. Højrupvejen 97",
+    "postal_code": "5750",
+    "city": "Ringe"
+  },
+  {
     "name": "Søndersø BK",
     "address": "Ullerupvænget 2",
     "postal_code": "5471",
@@ -654,6 +798,12 @@
     "city": "Blommenslyst"
   },
   {
+    "name": "University College Lillebælt Football Club",
+    "address": "Solbærvej 5",
+    "postal_code": "5260",
+    "city": "Odense S"
+  },
+  {
     "name": "Veflinge G & IF",
     "address": "Lindebjerg 38",
     "postal_code": "5474",
@@ -694,5 +844,11 @@
     "address": "Stadionvej 13",
     "postal_code": "5560",
     "city": "Aarup"
+  },
+  {
+    "name": "Aasum IF",
+    "address": "Ryttervejen 21",
+    "postal_code": "5240",
+    "city": "Odense Nø"
   }
 ]
