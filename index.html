@@ -7,26 +7,26 @@
     <title>Kørselstid - Fynske Fodboldklubber</title>
     <style>
         :root {
-            --primary: #1B5E20;
-            --primary-light: #4CAF50;
-            --primary-dark: #0D3B0F;
-            --accent: #FF6F00;
-            --accent-light: #FFB74D;
-            --bg: #F5F7FA;
+            --primary: #C90B0E;
+            --primary-light: #E02D30;
+            --primary-dark: #9C0F06;
+            --accent: #C90B0E;
+            --accent-light: #E02D30;
+            --bg: #F2F2F2;
             --card: #FFFFFF;
-            --text: #1A1A2E;
-            --text-muted: #6B7280;
-            --border: #E5E7EB;
-            --shadow: 0 4px 24px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
-            --radius: 16px;
-            --radius-sm: 10px;
+            --text: #1D1D1D;
+            --text-muted: #6B6B6B;
+            --border: #E0E0E0;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 24px rgba(0,0,0,0.12);
+            --radius: 10px;
+            --radius-sm: 8px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
@@ -34,31 +34,27 @@
 
         /* === HEADER === */
         .header {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            background: var(--primary);
             color: white;
-            padding: 2rem 2rem 3rem;
+            padding: 1.8rem 2rem 2.8rem;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.3;
-        }
         .header h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             position: relative;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
         }
-        .header h1 .icon { font-size: 2.5rem; margin-right: 0.5rem; }
+        .header h1 .icon { font-size: 2.2rem; margin-right: 0.5rem; }
         .header p {
-            font-size: 1.05rem;
-            opacity: 0.85;
+            font-size: 1rem;
+            opacity: 0.9;
             position: relative;
+            font-weight: 400;
         }
 
         /* === MAIN CONTAINER === */
@@ -83,14 +79,14 @@
         .progress-bar-outer {
             width: 100%;
             height: 12px;
-            background: #E8F5E9;
+            background: #FDEAEA;
             border-radius: 6px;
             overflow: hidden;
             margin: 1rem 0 0.5rem;
         }
         .progress-bar-inner {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            background: var(--primary);
             border-radius: 6px;
             transition: width 0.5s ease;
             width: 0%;
@@ -103,7 +99,7 @@
             display: inline-block;
             width: 24px;
             height: 24px;
-            border: 3px solid #E8F5E9;
+            border: 3px solid #FDEAEA;
             border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
@@ -123,10 +119,12 @@
         .search-card h2 {
             font-size: 1.3rem;
             margin-bottom: 1.2rem;
-            color: var(--primary-dark);
+            color: var(--primary);
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .search-grid {
@@ -163,8 +161,8 @@
             outline: none;
         }
         .search-input:focus {
-            border-color: var(--primary-light);
-            box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.15);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(201, 11, 14, 0.15);
             background: white;
         }
         .search-input-icon {
@@ -200,7 +198,7 @@
             transition: background 0.15s;
         }
         .autocomplete-item:hover, .autocomplete-item.selected {
-            background: #E8F5E9;
+            background: #FDEAEA;
             color: var(--primary-dark);
         }
         .autocomplete-item .city-tag {
@@ -228,27 +226,30 @@
             margin-top: 1.2rem;
         }
         .swap-btn:hover {
-            border-color: var(--primary-light);
-            background: #E8F5E9;
+            border-color: var(--primary);
+            background: #FDEAEA;
             transform: rotate(180deg);
         }
 
         .search-btn {
             padding: 0.85rem 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: var(--primary);
             color: white;
             border: none;
             border-radius: var(--radius-sm);
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
             white-space: nowrap;
             margin-top: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
         .search-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(27, 94, 32, 0.3);
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(201, 11, 14, 0.3);
         }
 
         /* === RESULT CARD === */
@@ -269,7 +270,7 @@
         }
 
         .result-header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: var(--primary);
             color: white;
             padding: 1.5rem 2rem;
             display: flex;
@@ -365,9 +366,10 @@
             transition: all 0.2s;
             position: relative;
         }
-        .tab-btn:hover { color: var(--text); background: var(--bg); }
+        .tab-btn:hover { color: var(--text); background: #FDEAEA; }
         .tab-btn.active {
-            color: var(--primary);
+            color: white;
+            background: var(--primary);
         }
         .tab-btn.active::after {
             content: '';
@@ -394,7 +396,8 @@
             outline: none;
         }
         .club-list-search:focus {
-            border-color: var(--primary-light);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(201, 11, 14, 0.15);
         }
 
         .club-times-table {
@@ -415,7 +418,7 @@
             padding: 0.6rem 1rem;
             border-bottom: 1px solid var(--border);
         }
-        .club-times-table tr:hover { background: #E8F5E9; }
+        .club-times-table tr:hover { background: #FDEAEA; }
         .club-times-table .time-badge {
             display: inline-block;
             padding: 0.2rem 0.6rem;
@@ -423,7 +426,7 @@
             font-weight: 600;
             font-size: 0.85rem;
         }
-        .time-green { background: #E8F5E9; color: #2E7D32; }
+        .time-green { background: #E8F5E9; color: #388E3C; }
         .time-yellow { background: #FFF9C4; color: #F57F17; }
         .time-orange { background: #FFE0B2; color: #E65100; }
         .time-red { background: #FFCDD2; color: #C62828; }
@@ -460,8 +463,8 @@
         .export-btn:hover {
             background: var(--primary);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(27, 94, 32, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(201, 11, 14, 0.2);
         }
         .export-btn.accent {
             border-color: var(--accent);
@@ -504,7 +507,7 @@
         .matrix-table td:first-child {
             position: sticky;
             left: 0;
-            background: #E8F5E9;
+            background: #FDEAEA;
             font-weight: 600;
             z-index: 1;
             text-align: left;
@@ -520,10 +523,11 @@
         .footer {
             text-align: center;
             padding: 2rem;
-            color: var(--text-muted);
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.8);
             font-size: 0.85rem;
         }
-        .footer a { color: var(--primary); text-decoration: none; }
+        .footer a { color: #FFFFFF; text-decoration: underline; }
 
         /* === STATS BAR === */
         .stats-bar {
