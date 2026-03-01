@@ -1152,6 +1152,12 @@ function highlightMatch(text, query) {
            text.substring(idx + query.length);
 }
 
+// === ADDRESS LINK HELPER ===
+function makeAddressLink(address) {
+    const url = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address);
+    return `<a href="${url}" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-decoration-color: var(--text-muted); text-underline-offset: 2px;" title="Åbn i Google Maps">${address}</a>`;
+}
+
 // === SEARCH ===
 function swapClubs() {
     const from = document.getElementById('fromInput');
@@ -1198,13 +1204,13 @@ function searchRoute() {
 
     if (fromClub) {
         document.getElementById('resultFromName').textContent = fromClub.name;
-        document.getElementById('resultFromAddr').textContent =
-            `${fromClub.address}, ${fromClub.postal_code} ${fromClub.city}`;
+        const fromAddr = `${fromClub.address}, ${fromClub.postal_code} ${fromClub.city}`;
+        document.getElementById('resultFromAddr').innerHTML = makeAddressLink(fromAddr);
     }
     if (toClub) {
         document.getElementById('resultToName').textContent = toClub.name;
-        document.getElementById('resultToAddr').textContent =
-            `${toClub.address}, ${toClub.postal_code} ${toClub.city}`;
+        const toAddr = `${toClub.address}, ${toClub.postal_code} ${toClub.city}`;
+        document.getElementById('resultToAddr').innerHTML = makeAddressLink(toAddr);
     }
 
     // Scroll to result
@@ -1249,7 +1255,7 @@ function loadClubTimes(clubName) {
             <td><strong>${d.club}</strong></td>
             <td><span class="time-badge ${cls}">${d.duration_text}</span></td>
             <td>${d.distance_km} km</td>
-            <td style="color: var(--text-muted); font-size: 0.85rem;">${d.address}</td>
+            <td style="color: var(--text-muted); font-size: 0.85rem;">${makeAddressLink(d.address)}</td>
         </tr>`;
     }).join('');
 }
